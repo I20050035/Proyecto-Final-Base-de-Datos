@@ -1,0 +1,453 @@
+CREATE TABLE  "almacen" (
+   "idalmacen" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idalmacen")
+);
+
+CREATE TABLE  "altamedica" (
+   "idaltamedica" serial8 ,
+   "fecha"   date DEFAULT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idaltamedica")
+)  ;
+CREATE TABLE  "ambulancia" (
+   "idambulancia" serial8 ,
+   "numambulancia"   int NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idambulancia")
+)  ;
+
+CREATE TABLE  "analisismedico" (
+   "idanalisismedico" serial8 ,
+   "numambulancia"   date DEFAULT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idanalisismedico")
+)  ;
+
+CREATE TABLE  "area" (
+   "idarea" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idtipodearea"   int NOT NULL, 
+   primary key ("idarea")
+)  ;
+
+CREATE TABLE  "articulo" (
+   "idarticulo" serial8 ,
+   "nombrearticulo"   date DEFAULT NULL, 
+   "cantidad"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idarticulo")
+)  ;
+
+CREATE TABLE  "asamblea" (
+   "idasamblea" serial8 ,
+   "fecha"   timestamp without time zone DEFAULT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idhorario"   int NOT NULL, 
+   primary key ("idasamblea")
+)  ;
+
+CREATE TABLE  "cama" (
+   "idcama" serial8 ,
+   "numcama"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idcama")
+)  ;
+
+CREATE TABLE  "cartillasalud" (
+   "idcartillasalud" serial8 ,
+   "nss"   varchar(50) NOT NULL, 
+   "noregistro"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idcartillasalud")
+)  ;
+
+
+CREATE TABLE  "cedulamedica" (
+   "idcedulamedica" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "numcedulamedica"   int NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idespecialidad"   int NOT NULL, 
+   primary key ("idcedulamedica")
+)  ;
+
+CREATE TABLE  "cirugia" (
+   "idcirugia" serial8 ,
+   "fecha"   date DEFAULT NULL, 
+   "nocirugia"   varchar(50) NOT NULL, 
+   "nombre"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idcirugia")
+)  ;
+
+
+CREATE TABLE  "cita" (
+   "idcita" serial8 ,
+   "numcita"   int DEFAULT NULL, 
+   "fecha"   date DEFAULT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idcita")
+)  ;
+
+CREATE TABLE  "cliente" (
+   "idcliente" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "apellidopaterno"   varchar(50) NOT NULL, 
+   "apellidomaterno"   varchar(50) NOT NULL, 
+   "curp"   varchar(50) NOT NULL, 
+   "calle"   varchar(50) NOT NULL, 
+   "colonia"   varchar(50) NOT NULL, 
+   "telefono"   varchar(50) NOT NULL, 
+   "numero"   varchar(50) NOT NULL, 
+   "codigopostal"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idfacturacliente"   int NOT NULL, 
+   "idpagocliente"   int NOT NULL, 
+   "idcompracliente"   int NOT NULL, 
+   primary key ("idcliente")
+)  ;
+CREATE TABLE  "clinicamedica" (
+   "idclinicamedica" serial8 ,
+   "noclinica"   varchar(50) NOT NULL, 
+   "nombreclinicamedica"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idclinicamedica")
+)  ;
+
+CREATE TABLE  "comida" (
+   "idcomida" serial8 ,
+   "nombrecomida"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idcomida")
+)  ;
+
+CREATE TABLE  "compra" (
+   "idcompra" serial8 ,
+   "fecha"   date DEFAULT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idarticulo"   int NOT NULL, 
+   primary key ("idcompra")
+)  ;
+
+CREATE TABLE  "compracliente" (
+   "idcompracliente" serial8 ,
+   "fecha"   date DEFAULT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idcompracliente")
+)  ;
+
+CREATE TABLE  "comprapaciente" (
+   "idcomprapaciente" serial8 ,
+   "fecha"   date DEFAULT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idcomprapaciente")
+)  ;
+
+CREATE TABLE  "consultamedica" (
+   "idconsultamedica" serial8 ,
+   "fecha"   date DEFAULT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idconsultamedica")
+)  ;
+
+
+CREATE TABLE  "edificio" (
+   "idedificio" serial8 ,
+   "noedificio"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idelevador"   int NOT NULL, 
+   "idfarmacia"   int NOT NULL, 
+   "idarea"   int NOT NULL, 
+   "idreglamento"   int NOT NULL, 
+   "idhabyteaacion"   int NOT NULL, 
+   primary key ("idedificio")
+)  ;
+
+CREATE TABLE  "elevador" (
+   "idelevador" serial8 ,
+   "numelevador"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idelevador")
+)  ;
+
+CREATE TABLE  "empleado" (
+   "idempleado" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "apellidopaterno"   varchar(50) NOT NULL, 
+   "apellidomaterno"   varchar(50) NOT NULL, 
+   "rfc"   varchar(50) NOT NULL, 
+   "calle"   varchar(50) NOT NULL, 
+   "colonia"   varchar(50) NOT NULL, 
+   "numero"   varchar(50) NOT NULL, 
+   "telefono"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idconsultamedica"   int NOT NULL, 
+   "idanalisismedico"   int NOT NULL, 
+   "idtratamiento"   int NOT NULL, 
+   "idcomida"   int NOT NULL, 
+   "idrecetamedica"   int NOT NULL, 
+   "idclinicamedica"   int NOT NULL, 
+   "idcompra"   int NOT NULL, 
+   "idcedulamedica"   int NOT NULL, 
+   "idcirugia"   int NOT NULL, 
+   "idasamblea"   int NOT NULL, 
+   "idtransporteempleado"   int NOT NULL, 
+   "idmantenimiento"   int NOT NULL, 
+   primary key ("idempleado")
+)  ;
+
+CREATE TABLE  "enfermedad" (
+   "idenfermedad" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idtipoenfermedad"   int NOT NULL, 
+   primary key ("idenfermedad")
+)  ;
+
+CREATE TABLE  "equipo" (
+   "idequipo" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "cantidad"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idequipo")
+)  ;
+
+
+CREATE TABLE  "especialidad" (
+   "idespecialidad" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idespecialidad")
+)  ;
+
+CREATE TABLE  "estudiante" (
+   "idestudiante" serial8 ,
+   "nombreestudiante"   varchar(50) NOT NULL, 
+   "apellidopaterno"   varchar(50) NOT NULL, 
+   "apellidomaterno"   varchar(50) NOT NULL, 
+   "matricula"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idestudiante")
+)  ;
+
+
+CREATE TABLE  "evento" (
+   "idevento" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "fecha"   date DEFAULT NULL, 
+   "direccion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idhorario"   int NOT NULL, 
+   "idasamblea"   int NOT NULL, 
+   primary key ("idevento")
+)  ;
+
+CREATE TABLE  "expedientemedico" (
+   "idexpedientemedico" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idexpedientemedico")
+)  ;
+
+CREATE TABLE  "facturacliente" (
+   "idfacturacliente" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "cantidad"   varchar(50) NOT NULL, 
+   "fecha"   date DEFAULT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idfacturacliente")
+)  ;
+
+
+CREATE TABLE  "facturaproveedor" (
+   "idfacturaproveedor" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "cantidad"   varchar(50) NOT NULL, 
+   "fecha"   date DEFAULT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idfacturaproveedor")
+)  ;
+
+
+CREATE TABLE  "farmacia" (
+   "idfarmacia" serial8 ,
+   "lugar"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idmedicamento"   int NOT NULL, 
+   "idarticulo"   int NOT NULL, 
+   "idpagocliente"   int NOT NULL, 
+   "idcompracliente"   int NOT NULL, 
+   primary key ("idfarmacia")
+)  ;
+
+CREATE TABLE  "habitacion" (
+   "idhabitacion" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "estado"   int NOT NULL, 
+   primary key ("idhabyteaacion")
+)  ;
+
+CREATE TABLE  "horario" (
+   "idhorario" serial8 ,
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idhorario")
+)  ;
+
+CREATE TABLE  "ingreso" (
+   "idingreso" serial8 ,
+   "numero"   varchar(50) NOT NULL, 
+   "fecha"   date DEFAULT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idingreso")
+)  ;
+
+CREATE TABLE  "mantenimiento" (
+   "idmantenimiento" serial8 ,
+   "descripcion"   varchar(50) NOT NULL, 
+   "fecha"   date DEFAULT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idmantenimiento")
+)  ;
+
+CREATE TABLE  "medicamento" (
+   "idmedicamento" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "fecha"   date DEFAULT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idmedicamento")
+)  ;
+
+CREATE TABLE  "paciente" (
+   "idpaciente" serial8 ,
+   "nombre"   varchar(11) NOT NULL, 
+   "apellido"   varchar(11) NOT NULL, 
+   "idhabyteaacion"   int NOT NULL, 
+   primary key ("idpaciente")
+)   ;
+CREATE TABLE  "pagocliente" (
+   "idpagocliente" serial8 ,
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idpagocliente")
+)  ;
+
+CREATE TABLE  "pagounidadmedica" (
+   "idpagounidadmedica" serial8 ,
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idpagounidadmedica")
+)  ;
+
+CREATE TABLE  "practicante" (
+   "idpracticante" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "apellidopaterno"   varchar(50) NOT NULL, 
+   "apellidomaterno"   varchar(50) NOT NULL, 
+   "matricula"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idpracticante")
+)  ;
+
+CREATE TABLE  "proveedor" (
+   "idproveedor" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "rfc"   varchar(50) NOT NULL, 
+   "telefono"   varchar(50) NOT NULL, 
+   "calle"   varchar(50) NOT NULL, 
+   "numero"   int DEFAULT NULL, 
+   "colonia"   varchar(50) NOT NULL, 
+   "codigopostal"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idfacturaproveedor"   int NOT NULL, 
+   primary key ("idproveedor")
+)  ;
+
+CREATE TABLE  "recetamedica" (
+   "idrecetamedica" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idmedicamento"   int NOT NULL, 
+   primary key ("idrecetamedica")
+)  ;
+
+CREATE TABLE  "reglamento" (
+   "idreglamento" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idreglamento")
+)  ;
+
+CREATE TABLE  "residencia" (
+   "idresidencia" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idpracticante"   int NOT NULL, 
+   primary key ("idresidencia")
+)  ;
+
+CREATE TABLE  "serviciosanitario" (
+   "idserviciosanitario" serial8 ,
+   "fecha"   date DEFAULT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idserviciosanitario")
+)  ;
+
+CREATE TABLE  "tratamiento" (
+   "idtratamiento" serial8 ,
+   "nombre"   varchar(50) NOT NULL, 
+   "descripcion"   varchar(50) NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   primary key ("idtratamiento")
+)  ;
+
+CREATE TABLE  "unidadmedica" (
+   "idunidadmedica" serial8 ,
+   "nombre"   varchar(30) NOT NULL, 
+   "direccion"   varchar(50) NOT NULL, 
+   "colonia"   varchar(20) NOT NULL, 
+   "estado"   varchar(20) NOT NULL, 
+   "municipio"   varchar(20) NOT NULL, 
+   "calle"   varchar(20) NOT NULL, 
+   "numero"   int NOT NULL, 
+   "estatus"   bytea NOT NULL DEFAULT b'1', 
+   "idedificio"   int NOT NULL, 
+   "idequipo"   int NOT NULL, 
+   "idresidencia"   int NOT NULL, 
+   "idserviciosanitario"   int NOT NULL, 
+   "idalmacen"   int NOT NULL, 
+   "idpagounidadmedica"   int NOT NULL, 
+   "idempleado"   int NOT NULL, 
+   "idreglamento"   int NOT NULL, 
+   "idasamblea"   int NOT NULL, 
+   "idevento"   int NOT NULL, 
+   "idvisita"   int NOT NULL, 
+   "idhorario"   int NOT NULL, 
+   "idserviciosocial"   int NOT NULL, 
+   "idcliente"   int NOT NULL, 
+   "idambulancia"   int NOT NULL, 
+   "idfacturacliente"   int NOT NULL, 
+   primary key ("idunidadmedica")
+)  ;
